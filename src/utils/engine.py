@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from tqdm import tqdm
+import numpy as np
 
 from src.utils.metric import loss_fn
 
@@ -37,7 +38,6 @@ def train_fn(data_loader, model, optimizer, device):
     epoch_loss =  loss_tot/len(data_loader)
     return epoch_loss
 
-
 def eval_fn(data_loader, model, device):
     '''
     Function to carry out evaluation for all batches
@@ -66,3 +66,23 @@ def eval_fn(data_loader, model, device):
     epoch_loss = loss_tot/len(data_loader)
 
     return epoch_loss
+
+def encode_fn(data_loader, model, device):
+    '''
+    Function to reduce dimensions encodings
+    '''
+
+    model.eval()
+    encodings = []
+    with torch.no_grad():
+        for bi, d in tqdm(enumerate(data_loader), total=len(data_loader), position=0, leave=True):
+            embeds = d["input_embed"]
+
+            embeds = embeds.to(device, dtype=torch.long)
+
+            encoded, decoded = model(embeds)
+            encodings.append(encoded.cpu().numpy())
+            
+    encodings = np.concatenate(encodings)
+
+    return encodings
