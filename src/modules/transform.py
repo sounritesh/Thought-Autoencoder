@@ -5,6 +5,9 @@ import torch.nn as nn
 class Encoder(nn.Module):
     def __init__(self, input_size, output_size) -> None:
         super(Encoder, self).__init__()
+        # input 768*2
+        # output 2
+
         layers = [
             nn.Linear(input_size, input_size/2),
             nn.Linear(input_size/2, input_size/4),
@@ -22,6 +25,8 @@ class Encoder(nn.Module):
 class Decoder(nn.Module):
     def __init__(self, input_size, output_size) -> None:
         super(Decoder, self).__init__()
+        # input 2
+        # output 768*2
         layers = [
             nn.Linear(input_size, output_size/8),
             nn.Linear(output_size/8, output_size/4),
