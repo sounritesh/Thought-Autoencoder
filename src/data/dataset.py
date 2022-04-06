@@ -84,7 +84,7 @@ class EmbeddingVector(Dataset):
         self.location_flags = ds.has_location.values
 
     def __len__(self):
-        return len(self.tags)
+        return len(self.inds)
 
     def __getitem__(self, index):
         ind = self.inds[index]
