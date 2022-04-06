@@ -68,7 +68,7 @@ class EmbeddingVector(Dataset):
         self.bio_encodings = bio_encodings
         self.bio_text = ds.bio.values
         self.bio_unique = bio_ids.bio.values
-        self.tags = OneHotEncoder(drop='if_binary').fit_transform(ds.tag.values)
+        self.tags = OneHotEncoder(drop='if_binary').fit_transform(ds.tag.values.reshape(-1, 1)).squeeze()
         self.user_bios = ds.bio.values
         self.top_level_flags = ds.is_top_level.values
         self.thought_blocked_flags = ds.is_thought_blocked.values
