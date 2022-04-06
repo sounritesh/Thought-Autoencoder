@@ -38,7 +38,7 @@ class AutoEncoder(nn.Module):
         self.decoder = Decoder(reduced_size, input_size)
 
     def forward(self, inputs):
-        inputs = inputs.type(torch.float)
+        # inputs = inputs.type(torch.float)
 
         encoded = self.encoder(inputs)
         decoded = self.decoder(encoded)
