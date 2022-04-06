@@ -77,7 +77,7 @@ class EmbeddingVector(Dataset):
         self.profile_pic_flags = ds.has_profile_pic.values
         self.cover_image_flags = ds.has_cover_image.values
         self.pronoun_flags = ds.has_pronouns.values
-        self.banned_flags = ds.is_banned_flags.values
+        self.banned_flags = ds.is_banned.values
         self.google_flags = ds.has_google.values
         self.phone_flags = ds.has_phone.values
         self.apple_flags = ds.has_apple.values
