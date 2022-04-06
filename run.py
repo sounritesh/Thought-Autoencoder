@@ -18,6 +18,7 @@ parser.add_argument("--output_dir", type=str, default="/output")
 parser.add_argument("--train_size", type=float, default=0.85)
 parser.add_argument("--train_batch_size", type=int, default=64)
 parser.add_argument("--val_batch_size", type=int, default=256)
+parser.add_argument("--epochs", type=int, default=10)
 
 parser.add_argument("--seed", type=int, default=42)
 
