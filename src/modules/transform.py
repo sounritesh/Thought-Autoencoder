@@ -6,7 +6,10 @@ class Encoder(nn.Module):
     def __init__(self, input_size, output_size) -> None:
         super(Encoder, self).__init__()
         layers = [
-            nn.Linear(input_size, output_size),
+            nn.Linear(input_size, input_size/2),
+            nn.Linear(input_size/2, input_size/4),
+            nn.Linear(input_size/4, input_size/8),
+            nn.Linear(input_size/8, output_size),
             # nn.ReLU()
         ]
 
@@ -20,7 +23,10 @@ class Decoder(nn.Module):
     def __init__(self, input_size, output_size) -> None:
         super(Decoder, self).__init__()
         layers = [
-            nn.Linear(input_size, output_size),
+            nn.Linear(input_size, output_size/8),
+            nn.Linear(output_size/8, output_size/4),
+            nn.Linear(output_size/4, output_size/2),
+            nn.Linear(output_size/2, output_size),
             # nn.ReLU()
         ]
 
