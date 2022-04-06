@@ -109,7 +109,7 @@ class EmbeddingVector(Dataset):
             ]
         )
 
-        # print(encoding.shape, bio_encoding.shape, tag_encoding.shape, other_encoding.shape)
+        print(encoding.dtype, bio_encoding.dtype, tag_encoding.dtype, other_encoding.dtype)
         return {
             "input_embed": torch.tensor(np.concatenate([encoding, bio_encoding, tag_encoding, other_encoding]), dtype=float)
         }
