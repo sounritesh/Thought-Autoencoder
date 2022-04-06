@@ -24,7 +24,7 @@ def train_fn(data_loader, model, optimizer, device):
     for bi, d in tqdm(enumerate(data_loader), total=len(data_loader), position=0, leave=True):
         embeds = d["input_embed"]
 
-        embeds = embeds.to(device, dtype=torch.long)
+        embeds = embeds.to(device)
 
         optimizer.zero_grad()
         encoded, decoded = model(embeds)
@@ -57,7 +57,7 @@ def eval_fn(data_loader, model, device):
         for bi, d in tqdm(enumerate(data_loader), total=len(data_loader), position=0, leave=True):
             embeds = d["input_embed"]
 
-            embeds = embeds.to(device, dtype=torch.long)
+            embeds = embeds.to(device)
 
             encoded, decoded = model(embeds)
 
@@ -78,7 +78,7 @@ def encode_fn(data_loader, model, device):
         for bi, d in tqdm(enumerate(data_loader), total=len(data_loader), position=0, leave=True):
             embeds = d["input_embed"]
 
-            embeds = embeds.to(device, dtype=torch.long)
+            embeds = embeds.to(device)
 
             encoded, decoded = model(embeds)
             encodings.append(encoded.cpu().numpy())
