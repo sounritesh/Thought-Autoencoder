@@ -111,7 +111,7 @@ def run(params, save_model=True):
         if early_stopping_iter < early_stopping_counter:
             break
         
-        print(f"EPOCH[{epoch+1}]: train loss: {train_loss}, test loss: {test_loss}")
+        print(f"EPOCH[{epoch+1}]: train loss: {train_loss}, test loss: {test_loss}, best loss: {best_loss}")
 
     return best_loss
 
