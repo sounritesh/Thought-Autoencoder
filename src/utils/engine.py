@@ -26,8 +26,12 @@ def train_fn(data_loader, model, optimizer, device):
 
         embeds = embeds.to(device)
 
+        print(f"Train Engine: {embeds}")
+
         optimizer.zero_grad()
         encoded, decoded = model(embeds)
+
+        print(f"Model Outputs: {encoded}, {decoded}")
 
         loss = loss_fn(embeds, decoded)
         loss.backward()
