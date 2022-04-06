@@ -1,3 +1,4 @@
+from ctypes.wintypes import INT
 import torch
 import torch.nn as nn
 
@@ -9,10 +10,10 @@ class Encoder(nn.Module):
         # output 2
 
         layers = [
-            nn.Linear(input_size, input_size/2),
-            nn.Linear(input_size/2, input_size/4),
-            nn.Linear(input_size/4, input_size/8),
-            nn.Linear(input_size/8, output_size),
+            nn.Linear(input_size, int(input_size/2)),
+            nn.Linear(int(input_size/2), int(input_size/4)),
+            nn.Linear(int(input_size/4), int(input_size/8)),
+            nn.Linear(int(input_size/8), output_size),
             # nn.ReLU()
         ]
 
@@ -28,10 +29,10 @@ class Decoder(nn.Module):
         # input 2
         # output 768*2
         layers = [
-            nn.Linear(input_size, output_size/8),
-            nn.Linear(output_size/8, output_size/4),
-            nn.Linear(output_size/4, output_size/2),
-            nn.Linear(output_size/2, output_size),
+            nn.Linear(input_size, int(output_size/8)),
+            nn.Linear(int(output_size/8), int(output_size/4)),
+            nn.Linear(int(output_size/4), int(output_size/2)),
+            nn.Linear(int(output_size/2), output_size),
             # nn.ReLU()
         ]
 
