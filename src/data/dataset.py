@@ -90,7 +90,7 @@ class EmbeddingVector(Dataset):
         ind = self.inds[index]
         encoding = self.text_encodings[ind]
         bio_ind = np.where(self.bio_unique==self.bio_text[index])
-        bio_encoding = self.bio_encodings[bio_ind]
+        bio_encoding = self.bio_encodings[bio_ind].squeeze()
         tag_encoding = self.tags[index].toarray().squeeze()
         other_encoding = np.array(
             [
@@ -109,7 +109,7 @@ class EmbeddingVector(Dataset):
             ]
         )
 
-        print(encoding.shape, bio_encoding.shape, tag_encoding.shape, other_encoding.shape)
+        # print(encoding.shape, bio_encoding.shape, tag_encoding.shape, other_encoding.shape)
         return {
             "input_embed": torch.tensor(np.concatenate([encoding, bio_encoding, tag_encoding, other_encoding]))
         }
