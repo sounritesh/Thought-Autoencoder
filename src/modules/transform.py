@@ -13,6 +13,7 @@ class Encoder(nn.Module):
         self.encoder = nn.Sequential(*layers)
 
     def forward(self, inputs):
+        print(inputs.shape, inputs.dtype)
         return self.encoder(inputs)
 
 
