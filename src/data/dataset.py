@@ -4,11 +4,11 @@ from torch.utils.data import Dataset
 from sklearn.preprocessing import OneHotEncoder
 import numpy as np
 
-from src.utils.config import BASE_TOKENIZER
+# from src.utils.config import BASE_TOKENIZER
 
 
 class Thoughts(Dataset):
-    def __init__(self, ds, max_len, tokenizer = BASE_TOKENIZER) -> None:
+    def __init__(self, ds, max_len, tokenizer) -> None:
         super().__init__()
         self.texts = ds.text.values
         self.tags = ds.tag.values
