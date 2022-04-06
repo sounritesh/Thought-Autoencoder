@@ -1,4 +1,4 @@
-from transformers import AutoModel, AutoTokenizer
+# from transformers import AutoModel, AutoTokenizer
 import torch
 
 # BASE_MODEL_PATH = "vinai/bertweet-base"
