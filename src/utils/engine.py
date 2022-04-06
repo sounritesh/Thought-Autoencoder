@@ -22,14 +22,13 @@ def train_fn(data_loader, model, optimizer, device):
     loss_tot = 0
     for bi, d in tqdm(enumerate(data_loader), total=len(data_loader), position=0, leave=True):
         embeds = d["input_embed"]
-        print(embeds.dtype)
 
         embeds = embeds.to(device, dtype=torch.long)
 
         optimizer.zero_grad()
         encoded, decoded = model(embeds)
 
-        loss = loss_fn(embeds, decoded)
+        loss = loss_fn(embeds.type(torch.float), decoded.type(torch.float))
         loss.backward()
         loss_tot += loss.item()
         # print(loss.item())
@@ -62,7 +61,7 @@ def eval_fn(data_loader, model, device):
 
             encoded, decoded = model(embeds)
 
-            loss = loss_fn(embeds, decoded)
+            loss = loss_fn(embeds.type(torch.float), decoded.type(torch.float))
             loss_tot += loss.item()
     epoch_loss = loss_tot/len(data_loader)
 
