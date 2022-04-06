@@ -88,7 +88,7 @@ class EmbeddingVector(Dataset):
 
     def __getitem__(self, index):
         ind = self.inds[index]
-        encoding = self.encodings[ind]
+        encoding = self.text_encodings[ind]
         bio_ind = np.where(self.bio_unique==self.bio_text[index])
         bio_encoding = self.bio_encodings[bio_ind]
         tag_encoding = self.tags[index].toarray().squeeze()
