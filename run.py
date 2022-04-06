@@ -19,6 +19,7 @@ parser.add_argument("--train_size", type=float, default=0.85)
 parser.add_argument("--train_batch_size", type=int, default=64)
 parser.add_argument("--val_batch_size", type=int, default=256)
 parser.add_argument("--epochs", type=int, default=10)
+parser.add_argument("--lr", type=float, default=1e-2)
 
 parser.add_argument("--seed", type=int, default=42)
 
@@ -117,7 +118,7 @@ def run(params, save_model=True):
 
 def main():
     params = {
-        "lr": 1e-2,
+        "lr": args.lr,
     }
 
     run(params)
