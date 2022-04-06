@@ -7,7 +7,7 @@ class Encoder(nn.Module):
         super(Encoder, self).__init__()
         layers = [
             nn.Linear(input_size, output_size),
-            nn.ReLU()
+            # nn.ReLU()
         ]
 
         self.encoder = nn.Sequential(*layers)
@@ -21,7 +21,7 @@ class Decoder(nn.Module):
         super(Decoder, self).__init__()
         layers = [
             nn.Linear(input_size, output_size),
-            nn.ReLU()
+            # nn.ReLU()
         ]
 
         self.decoder = nn.Sequential(*layers)
