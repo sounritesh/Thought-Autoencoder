@@ -13,7 +13,6 @@ class Encoder(nn.Module):
         self.encoder = nn.Sequential(*layers)
 
     def forward(self, inputs):
-        print(inputs.shape, inputs.dtype)
         return self.encoder(inputs)
 
 
@@ -39,6 +38,7 @@ class AutoEncoder(nn.Module):
         self.decoder = Decoder(reduced_size, input_size)
 
     def forward(self, inputs):
+        inputs = inputs.type(torch.float64)
         encoded = self.encoder(inputs)
         decoded = self.decoder(encoded)
 
