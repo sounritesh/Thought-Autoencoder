@@ -22,6 +22,7 @@ def train_fn(data_loader, model, optimizer, device):
     loss_tot = 0
     for bi, d in tqdm(enumerate(data_loader), total=len(data_loader), position=0, leave=True):
         embeds = d["input_embed"]
+        print(embeds.dtype)
 
         embeds = embeds.to(device, dtype=torch.long)
 
