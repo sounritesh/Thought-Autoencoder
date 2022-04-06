@@ -4,7 +4,7 @@ import torch.nn as nn
 
 class Encoder(nn.Module):
     def __init__(self, input_size, output_size) -> None:
-        super.__init__(Encoder)
+        super(Encoder, self).__init__()
         layers = [
             nn.Linear(input_size, output_size),
             nn.ReLU()
@@ -18,7 +18,7 @@ class Encoder(nn.Module):
 
 class Decoder(nn.Module):
     def __init__(self, input_size, output_size) -> None:
-        super().__init__(Decoder)
+        super(Decoder, self).__init__()
         layers = [
             nn.Linear(input_size, output_size),
             nn.ReLU()
@@ -32,7 +32,7 @@ class Decoder(nn.Module):
 
 class AutoEncoder(nn.Module):
     def __init__(self, input_size, reduced_size) -> None:
-        super().__init__(AutoEncoder)
+        super(AutoEncoder, self).__init__()
 
         self.encoder = Encoder(input_size, reduced_size)
         self.decoder = Decoder(reduced_size, input_size)
