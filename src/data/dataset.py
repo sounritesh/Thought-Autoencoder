@@ -1,4 +1,4 @@
-from numpy import dtype
+from numpy import dtype, float64
 import torch
 from torch.utils.data import Dataset
 from sklearn.preprocessing import OneHotEncoder
@@ -110,5 +110,5 @@ class EmbeddingVector(Dataset):
         )
 
         return {
-            "input_embed": torch.tensor(np.concatenate([encoding, bio_encoding, tag_encoding, other_encoding.astype("float64")]), dtype=float)
+            "input_embed": torch.tensor(np.concatenate([encoding, bio_encoding, tag_encoding, other_encoding.astype("float64")], dtype=float64))
         }
